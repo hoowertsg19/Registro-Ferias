@@ -16,7 +16,7 @@ class FeriaController extends Controller
 
     public function create()
     {
-        $emprendedores = Emprendedor::all();
+        $emprendedores = \App\Models\Emprendedor::all();
         return view('ferias.create', compact('emprendedores'));
     }
 

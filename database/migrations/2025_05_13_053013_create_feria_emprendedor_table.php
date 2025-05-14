@@ -14,14 +14,11 @@ return new class extends Migration
         Schema::create('feria_emprendedor', function (Blueprint $table) {
             $table->id();
             $table->foreignId('feria_id')->constrained()->onDelete('cascade');
-            $table->foreignId('emprendedor_id')->constrained()->onDelete('cascade');
+            $table->foreignId('emprendedor_id')->constrained('emprendedores')->onDelete('cascade');
             $table->timestamps();
-        });        
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('feria_emprendedor');

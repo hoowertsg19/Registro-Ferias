@@ -14,6 +14,6 @@ class Feria extends Model
 
     public function emprendedores()
     {
-        return $this->belongsToMany(Emprendedor::class);
+        return $this->belongsToMany(Emprendedor::class, 'feria_emprendedor');
     }
 }

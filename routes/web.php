@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('ferias', FeriaController::class);
-Route::resource('emprendedores', EmprendedorController::class);
+Route::resource('ferias', \App\Http\Controllers\FeriaController::class);
+Route::resource('emprendedores', \App\Http\Controllers\EmprendedorController::class);
 
 require __DIR__.'/auth.php';

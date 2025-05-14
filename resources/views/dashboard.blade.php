@@ -1,17 +1,16 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+@section('content')
+<div class="container py-4">
+    <h1 class="mb-4">Bienvenido, {{ Auth::user()->name }}</h1>
+    <p class="mb-6">Selecciona una opción:</p>
+    <div class="d-flex flex-column gap-3">
+        <a href="{{ route('ferias.index') }}" class="btn btn-primary w-25">
+            📅 Ver Ferias
+        </a>
+        <a href="{{ route('emprendedores.index') }}" class="btn btn-success w-25">
+            🧑‍💼 Ver Emprendedores
+        </a>
     </div>
-</x-app-layout>
+</div>
+@endsection
