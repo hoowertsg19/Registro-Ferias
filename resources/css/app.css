@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Card Emprendedor estilo Uiverse */
+.cardm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.card-emp {
+  position: relative;
+  width: 250px;
+  height: 130px;
+  border-radius: 25px;
+  background: whitesmoke;
+  color: black;
+  box-shadow: 0 4px 24px 0 #0002;
+  transition: .4s;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.card-emp:hover {
+  background-color: #FFE87C;
+}
+
+.card-emp .emp-checkbox {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  accent-color: #2563eb;
+  border-radius: 6px;
+  border: 2px solid #2563eb;
+  background: #fff;
+  transition: box-shadow .2s;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.card-emp .emp-checkbox:checked {
+  box-shadow: 0 0 0 3px #2563eb44;
+}
+
+.card-emp .emp-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
+}
+
+.card-emp .emp-hover {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .3s;
+}
+
+.card-emp:hover .emp-content {
+  opacity: 0;
+}
+
+.card-emp:hover .emp-hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.card-emp .emp-nombre {
+  font-size: 2em;
+  font-weight: bold;
+  color: #222;
+}
+
+.card-emp .emp-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+
+.card-emp .emp-info:last-child {
+  margin-bottom: 0;
+}
