@@ -47,28 +47,32 @@
                 <label class="block text-gray-700 dark:text-gray-200 font-semibold mb-4">Emprendedores</label>
                 <div class="cardm">
                     @foreach($emprendedores as $emp)
-                        <label class="card-emp">
-                            <input type="checkbox" name="emprendedores[]" value="{{ $emp->id }}" class="emp-checkbox" />
-                            <div class="emp-content">
-                                <span class="emp-nombre">{{ $emp->nombre }}</span>
+                        <div class="emp-card-container">
+                            <input type="checkbox" name="emprendedores[]" value="{{ $emp->id }}" class="emp-checkbox">
+                            <div class="card">
+                                <div class="main">{{ $emp->nombre }}</div>
                             </div>
-                            <div class="emp-hover">
-                                <div class="emp-info text-blue-600">
-                                    {{-- Teléfono --}}
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm12-12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                                    </svg>
-                                    <span>{{ $emp->telefono }}</span>
+                            <div class="card2">
+                                <div class="upper">
+                                    <div class="humidity">
+                                        <div class="humiditytext">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
+                                            </svg>
+                                            <span>{{ $emp->telefono }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="emp-info text-green-600">
-                                    {{-- Rubro --}}
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.657-1.343-3-3-3zm0 10c-4.418 0-8-1.79-8-4V6c0-2.21 3.582-4 8-4s8 1.79 8 4v8c0 2.21-3.582 4-8 4z" />
-                                    </svg>
-                                    <span>{{ $emp->rubro }}</span>
+                                <div class="lower">
+                                    <div class="realfeel">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.657-1.343-3-3-3zm0 10c-4.418 0-8-1.79-8-4V6c0-2.21 3.582-4 8-4s8 1.79 8 4v8c0 2.21-3.582 4-8 4z" />
+                                        </svg>
+                                        <span>{{ $emp->rubro }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </label>
+                        </div>
                     @endforeach
                 </div>
             </div>

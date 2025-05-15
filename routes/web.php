@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('ferias', \App\Http\Controllers\FeriaController::class);
-Route::resource('emprendedores', \App\Http\Controllers\EmprendedorController::class);
+Route::resource('emprendedores', EmprendedorController::class)->parameters([
+    'emprendedores' => 'emprendedor'
+]);
 
 require __DIR__.'/auth.php';

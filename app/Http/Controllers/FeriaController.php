@@ -10,7 +10,9 @@ class FeriaController extends Controller
 {
     public function index()
     {
-        $ferias = Feria::with('emprendedores')->get();
+        // Usa paginación en lugar de get() para que $ferias->links() funcione
+        $ferias = Feria::with('emprendedores')->paginate(10);
+
         return view('ferias.index', compact('ferias'));
     }
 
@@ -65,6 +67,8 @@ class FeriaController extends Controller
 
     public function show(Feria $feria)
     {
-        return view('ferias.show', compact('feria'));
+        // Cambia '12' por la cantidad de cards por página que quieras
+        $emprendedores = $feria->emprendedores()->paginate(12);
+        return view('ferias.show', compact('feria', 'emprendedores'));
     }
 }

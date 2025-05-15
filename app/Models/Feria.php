@@ -12,6 +12,10 @@ class Feria extends Model
 
     protected $fillable = ['nombre', 'fecha', 'lugar', 'descripcion'];
 
+    protected $casts = [
+        'fecha' => 'date',  // así $this->fecha es instancia Carbon
+    ];
+
     public function emprendedores()
     {
         return $this->belongsToMany(Emprendedor::class, 'feria_emprendedor');
