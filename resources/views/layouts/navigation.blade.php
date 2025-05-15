@@ -14,6 +14,12 @@
           <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             {{ __('Dashboard') }}
           </x-nav-link>
+          <x-nav-link :href="route('ferias.index')" :active="request()->routeIs('ferias.*')">
+            {{ __('Ferias') }}
+          </x-nav-link>
+          <x-nav-link :href="route('emprendedores.index')" :active="request()->routeIs('emprendedores.*')">
+            {{ __('Emprendedores') }}
+          </x-nav-link>
         </div>
       </div>
 
@@ -82,6 +88,12 @@
       <x-responsive-nav-link :href="route('dashboard')"
                              :active="request()->routeIs('dashboard')">
         {{ __('Dashboard') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('ferias.index')" :active="request()->routeIs('ferias.*')">
+        {{ __('Ferias') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('emprendedores.index')" :active="request()->routeIs('emprendedores.*')">
+        {{ __('Emprendedores') }}
       </x-responsive-nav-link>
     </div>
 
