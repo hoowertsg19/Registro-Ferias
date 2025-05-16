@@ -26,9 +26,11 @@ class FeriaController extends Controller
     {
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
-            'fecha' => 'required|date|after:today', // <-- Aquí validas que sea después de hoy
+            'fecha' => 'required|date|after:today',
             'lugar' => 'required|string|max:255',
             'descripcion' => 'required|string',
+        ], [
+            'fecha.after' => 'La fecha debe ser posterior al día de hoy.',
         ]);
 
         $feria = Feria::create($validated);

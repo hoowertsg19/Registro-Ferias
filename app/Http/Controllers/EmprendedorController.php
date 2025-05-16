@@ -21,13 +21,23 @@ class EmprendedorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|max:100',
+            'nombre' => 'required|string|min:3|max:100',
             'telefono' => [
                 'required',
                 'unique:emprendedores,telefono',
-                'regex:/^[578][0-9]{7}$/',
+                'regex:/^(8|7|5)[0-9]{7}$/',
             ],
-            'rubro' => 'required|max:100',
+            'rubro' => 'required|string|min:3|max:50',
+        ], [
+            'telefono.regex' => 'El número debe tener 8 dígitos y comenzar con 8, 7 o 5.',
+            'nombre.required' => 'El nombre es obligatorio.',
+            'nombre.min' => 'El nombre debe tener al menos 3 caracteres.',
+            'nombre.max' => 'El nombre no debe exceder 100 caracteres.',
+            'rubro.required' => 'El rubro es obligatorio.',
+            'rubro.min' => 'El rubro debe tener al menos 3 caracteres.',
+            'rubro.max' => 'El rubro no debe exceder 50 caracteres.',
+            'telefono.required' => 'El teléfono es obligatorio.',
+            'telefono.unique' => 'El teléfono ya está registrado.',
         ]);
 
         Emprendedor::create($request->all());
@@ -43,16 +53,24 @@ class EmprendedorController extends Controller
     public function update(Request $request, Emprendedor $emprendedor)
     {
         $request->validate([
-            'nombre' => 'required|max:100',
+            'nombre' => 'required|string|min:3|max:100',
             'telefono' => [
                 'required',
-                'unique:emprendedores,telefono,' . $emprendedor->id,
-                'regex:/^[578][0-9]{7}$/',
+                'regex:/^(8|7|5)[0-9]{7}$/',
             ],
-            'rubro' => 'required|max:100',
+            'rubro' => 'required|string|min:3|max:50',
+        ], [
+            'telefono.regex' => 'El número debe tener 8 dígitos y comenzar con 8, 7 o 5.',
+            'nombre.required' => 'El nombre es obligatorio.',
+            'nombre.min' => 'El nombre debe tener al menos 3 caracteres.',
+            'nombre.max' => 'El nombre no debe exceder 100 caracteres.',
+            'rubro.required' => 'El rubro es obligatorio.',
+            'rubro.min' => 'El rubro debe tener al menos 3 caracteres.',
+            'rubro.max' => 'El rubro no debe exceder 50 caracteres.',
+            'telefono.required' => 'El teléfono es obligatorio.',
         ]);
 
-        $emprendedor->update($request->all());
+        $emprendedor->update($request->only(['nombre', 'telefono', 'rubro']));
 
         return redirect()->route('emprendedores.index');
     }
@@ -60,7 +78,7 @@ class EmprendedorController extends Controller
     public function destroy(Emprendedor $emprendedor)
     {
         $emprendedor->delete();
-        return redirect()->route('emprendedores.index');
+        return redirect()->route('emprendedores.index')->with('success', '¡Emprendedor eliminado correctamente!');
     }
 
     public function show(Emprendedor $emprendedor)
