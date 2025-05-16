@@ -21,9 +21,13 @@ class EmprendedorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
-            'telefono' => 'required',
-            'rubro' => 'required',
+            'nombre' => 'required|max:100',
+            'telefono' => [
+                'required',
+                'unique:emprendedores,telefono',
+                'regex:/^[578][0-9]{7}$/',
+            ],
+            'rubro' => 'required|max:100',
         ]);
 
         Emprendedor::create($request->all());
@@ -39,9 +43,13 @@ class EmprendedorController extends Controller
     public function update(Request $request, Emprendedor $emprendedor)
     {
         $request->validate([
-            'nombre' => 'required',
-            'telefono' => 'required',
-            'rubro' => 'required',
+            'nombre' => 'required|max:100',
+            'telefono' => [
+                'required',
+                'unique:emprendedores,telefono,' . $emprendedor->id,
+                'regex:/^[578][0-9]{7}$/',
+            ],
+            'rubro' => 'required|max:100',
         ]);
 
         $emprendedor->update($request->all());

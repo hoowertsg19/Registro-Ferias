@@ -84,3 +84,28 @@
     </div>
 </div>
 @endsection
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('nombre').addEventListener('input', function(e) {
+        let value = e.target.value;
+        if (value.length > 0) {
+            e.target.value = value.charAt(0).toUpperCase() + value.slice(1);
+        }
+    });
+
+    document.getElementById('lugar').addEventListener('input', function(e) {
+        let value = e.target.value;
+        if (value.length > 0) {
+            e.target.value = value.charAt(0).toUpperCase() + value.slice(1);
+        }
+    });
+
+    document.getElementById('descripcion').addEventListener('input', function(e) {
+        let value = e.target.value;
+        if (value.length > 0) {
+            e.target.value = value.charAt(0).toUpperCase() + value.slice(1);
+        }
+    });
+});
+</script>

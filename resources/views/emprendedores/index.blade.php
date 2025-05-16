@@ -29,7 +29,7 @@
                         <a href="{{ route('emprendedores.edit', $emp) }}" class="inline-block text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mx-1" title="Editar">
                             ✏️
                         </a>
-                        <form action="{{ route('emprendedores.destroy', $emp) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Eliminar este emprendedor?')">
+                        <form action="{{ route('emprendedores.destroy', $emp) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Estás seguro que deseas eliminar este emprendedor? Esta acción no se puede deshacer.')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 mx-1" title="Eliminar">

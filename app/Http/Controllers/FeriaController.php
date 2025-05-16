@@ -24,14 +24,14 @@ class FeriaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'fecha' => 'required|date',
-            'lugar' => 'required',
-            'descripcion' => 'required',
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'fecha' => 'required|date|after:today', // <-- Aquí validas que sea después de hoy
+            'lugar' => 'required|string|max:255',
+            'descripcion' => 'required|string',
         ]);
 
-        $feria = Feria::create($request->only(['nombre', 'fecha', 'lugar', 'descripcion']));
+        $feria = Feria::create($validated);
         $feria->emprendedores()->sync($request->emprendedores ?? []);
 
         return redirect()->route('ferias.index');
